@@ -1,0 +1,31 @@
+<%- include('include/head') -%>
+
+  <h2>Users</h2>
+  <a href="/user/view" class="btn btn-success">Add</a> <br/>   <br/>    
+  <table class="table table-striped">
+    <thead>
+      <tr>
+		<th>Username</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Age</th>
+		<th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+		<% users.forEach(function (user){ %>
+		  <tr>
+			<td><%= user.username %></td>
+			<td><%= user.fname %></td>
+			<td><%= user.lname %></td>
+			<td><%= user.age %></td>
+			<td>
+				<a href="/user/view/<%= user._id %>" class="btn btn-warning">Edit</a>&nbsp;
+				<a href="/user/<%= user._id %>/delete" class="btn btn-danger" onclick="return confirm('Do you really wants to delete ?');">Delete</a>
+			</td>
+		  </tr> 
+		<% });%>
+    </tbody>
+  </table>
+</div>
+<%- include('include/footer') -%>
